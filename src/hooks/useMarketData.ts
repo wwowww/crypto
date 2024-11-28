@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { fetchMarketSingleCoinData, fetchMarketCoinListAllData, fetchMarketHistoricalChartData, fetchMarketTrendingCoinData } from '@/app/api/fetchMarketData';
-import { useMarketStore } from '@/stores/marketStore';
+import { useMarketStore } from '@/stores/useMarketStore';
 import { Market } from "@/types";
 
 export const useMarketData = ({id, currency, days}: Market) => {
