@@ -7,7 +7,7 @@ export const fetchMarketSingleCoinData = async (id: string) => {
 };
 
 export const fetchMarketCoinListAllData = async (currency: string) => {
-  const { data } = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}//markets?vs_currency=${currency}&order=market_cap_desc&per_page=100&page=1&sparkline=false`);
+  const { data } = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/markets?vs_currency=${currency}&order=market_cap_desc&per_page=100&page=1&sparkline=false`);
 
   return { data };
 };
