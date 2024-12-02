@@ -18,7 +18,7 @@ const TableBody = ({ rows }: TableBodyProps) => {
   return (
     <>
       {rows.map((row) => (
-        <tr key={row.id} className='gap-0.5'>
+        <tr key={row.id}>
           {row.getVisibleCells().map((cell: any, index: number) => (
             <td key={cell.id}>
               <div className={`flex h-[88px] items-center ${getColumnAlignmentClass(index)}`}>

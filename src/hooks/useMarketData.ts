@@ -41,7 +41,7 @@ export const useMarketData = ({id, currency, days}: Market) => {
     cacheTime: 10 * 60 * 1000,
   });
 
-  const { data: HistoricalChart } = useQuery({
+  const { data: historicalChart } = useQuery({
     queryKey: ['HistoricalChart', currency],
     queryFn: async () => {
       if (!id || !currency || !days) return null;
@@ -52,7 +52,7 @@ export const useMarketData = ({id, currency, days}: Market) => {
     },
   })
 
-  const { data: TrendingCoin } = useQuery({
+  const { data: trendingCoin } = useQuery({
     queryKey: ['TrendingCoin', currency],
     queryFn: async () => {
       if (!currency) return null;
@@ -63,5 +63,5 @@ export const useMarketData = ({id, currency, days}: Market) => {
     }
   })
 
-  return { singleCoin, coinListAll, HistoricalChart, TrendingCoin };
+  return { singleCoin, coinListAll, historicalChart, trendingCoin };
 };
