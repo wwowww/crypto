@@ -7,14 +7,7 @@ import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import TabMenu from '@/components/TabMenu/TabMenu';
 import SearchFilter from '@/components/SearchFilter/SearchFilter';
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+import CoinPagination from './CoinPagination';
 
 const CoinTable = () => {
   const { currency } = useCurrencyStore();
@@ -60,20 +53,15 @@ const CoinTable = () => {
     setActiveTab(tab);
   };
 
-  const handlePageChange = (direction: 'prev' | 'next') => {
-    setPagination(prev => {
-      let newPageIndex = prev.pageIndex;
-      if (direction === 'prev') {
-        newPageIndex = Math.max(0, prev.pageIndex - 1);
-      } else if (direction === 'next') {
-        newPageIndex = Math.min(pageCount - 1, prev.pageIndex + 1);
-      }
-      return { ...prev, pageIndex: newPageIndex };
-    });
+  const handlePageChange = (newPageIndex: number) => {
+    setPagination((prev) => ({
+      ...prev,
+      pageIndex: newPageIndex,
+    }));
   };
 
   return (
-    <>
+    <div className='w-full'>
       <div className='flex justify-between items-center mb-4'>
         <TabMenu activeTab={activeTab} onTabClick={handleTabClick} />
         <SearchFilter globalFilter={globalFilter} setGlobalFilter={setGlobalFilter} />
@@ -95,55 +83,12 @@ const CoinTable = () => {
           )}
         </tbody>
       </table>
-      <div className="mt-4">
-        <Pagination>
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (pagination.pageIndex > 0) {
-                    handlePageChange('prev');
-                  }
-                }}
-              />
-            </PaginationItem>
-
-            {/* 페이지 번호 표시 */}
-            {Array.from({ length: pageCount }).map((_, index) => (
-              <PaginationItem key={index}>
-                <PaginationLink
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setPagination(prev => ({
-                      ...prev,
-                      pageIndex: index,
-                    }));
-                  }}
-                  isActive={index === pagination.pageIndex}
-                >
-                  {index + 1}
-                </PaginationLink>
-              </PaginationItem>
-            ))}
-
-            <PaginationItem>
-              <PaginationNext
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (pagination.pageIndex < pageCount - 1) {
-                    handlePageChange('next');
-                  }
-                }}
-              />
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
-      </div>
-    </>
+      <CoinPagination
+        pageCount={pageCount}
+        pageIndex={pagination.pageIndex}
+        onPageChange={handlePageChange}
+      />
+    </div>
   );
 };
 
