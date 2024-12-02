@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { useReactTable, SortingState, getCoreRowModel } from '@tanstack/react-table';
+import { useReactTable, SortingState, getCoreRowModel, getSortedRowModel } from '@tanstack/react-table';
 import { useCurrencyStore } from '@/stores/useCurrencyStore';
 import { useMarketData } from '@/hooks/useMarketData';
 import { createColumns } from './Columns';
@@ -19,10 +19,9 @@ const CoinTable = () => {
     data,
     columns,
     state: { sorting },
-    onSortingChange: (updaterOrValue) => {
-      setSorting(updaterOrValue);
-    },
+    onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
   });
 
   return (
