@@ -1,5 +1,5 @@
 import { createColumnHelper } from '@tanstack/react-table';
-import { formatCurrency, formatMarketCapPrice } from "@/utils/formatPrice"; // 유틸 함수 import
+import { formatCurrency, formatMarketCapPrice } from "@/utils/formatPrice";
 
 export const createColumns = (currency: string) => {
   const columnHelper = createColumnHelper<any>();
@@ -22,6 +22,13 @@ export const createColumns = (currency: string) => {
             </div>
           </div>
         );
+      },
+      filterFn: (row, columnId, filterValue) => {
+        const nameValue = row.getValue('name')?.toString().toLowerCase() || '';
+        const symbolValue = row.getValue('symbol')?.toString().toLowerCase() || '';
+        const filter = filterValue.toLowerCase();
+
+        return nameValue.includes(filter) || symbolValue.includes(filter);
       },
     }),
     columnHelper.accessor('current_price', {
