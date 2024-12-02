@@ -28,7 +28,7 @@ const TableHeader = ({ headerGroups }: TableHeaderProps) => {
               <th
                 key={header.id}
                 onClick={header.column.getToggleSortingHandler()}
-                className={`cursor-pointer pt-4 pb-4 bg-[#f8f9fa]
+                className={`cursor-pointer pt-4 pb-4 bg-[#f8f9fa] border-b-2 border-white
                           ${isFirst ? 'first:rounded-l-[10px] first:pl-5' : ''} 
                           ${isLast ? 'last:rounded-r-[10px] last:pr-5' : ''}`}
               >
