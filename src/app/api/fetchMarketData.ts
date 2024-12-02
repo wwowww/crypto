@@ -19,7 +19,7 @@ export const fetchMarketHistoricalChartData = async (id: string, currency: strin
 };
 
 export const fetchMarketTrendingCoinData = async (currency: string) => {
-  const { data } = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/markets?vs_currency=${currency}&order=gecko_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h`);
+  const { data } = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/markets?vs_currency=${currency}&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h`);
 
   return { data };
 }
