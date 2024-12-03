@@ -1,15 +1,18 @@
 import { flexRender } from '@tanstack/react-table';
+import { Skeleton } from '@/components/ui/skeleton';
 import Link from "next/link";
+import { range } from 'lodash';
 
 interface TableBodyProps {
   rows: any[];
+  isNav?: boolean;
 }
 
-const TableBody = ({ rows }: TableBodyProps) => {
+const TableBody = ({ rows, isNav=false }: TableBodyProps) => {
   const getColumnAlignmentClass = (index: number) => {
     if (index === 0) {
       return 'justify-start';
-    } else if (index === 1) {
+    } else if (index === 1 && !isNav) {
       return 'justify-center';
     } else {
       return 'justify-end'; 
@@ -26,22 +29,39 @@ const TableBody = ({ rows }: TableBodyProps) => {
     }
   }
 
-  return (
-    <>
-      {rows.map((row) => (
-        <tr key={row.id} className="group hover:bg-[#f6f7f8]">
-          {row.getVisibleCells().map((cell: any, index: number) => (
-            <td key={cell.id} className={`px-4 py-2 mt-2 ${getColumnChildrenRoundedClass(index)}`}>
-              <Link href={`${cell.row.original.id}`}>
-                <div className={`flex h-[88px] items-center  ${getColumnAlignmentClass(index)}`}>  
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </div>
-              </Link>
-            </td>
-          ))}
-        </tr>
-      ))}
-    </>
+  return rows.length !== 0 ? (
+    rows.map((row) => (
+      <tr key={row.id} className="group hover:bg-[#f6f7f8]">
+        {row.getVisibleCells().map((cell: any, index: number) => (
+          <td key={cell.id} 
+              className={`px-4 py-2
+                          ${getColumnChildrenRoundedClass(index)}
+                          ${isNav ? 'px-0 py-0' : ''}
+                        `}>
+            <Link href={`${cell.row.original.id}`}>
+              <div className={`flex h-[88px] items-center  
+                                ${getColumnAlignmentClass(index)}
+                                ${isNav ? 'h-[64px]' : ''}
+                              `}>
+                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+              </div>
+            </Link>
+          </td>
+        ))}
+      </tr>
+    ))
+  ) : (
+    range(0, 10)?.map((item: number) => (
+      <tr key={"key"+item}>
+        <td className="flex items-center space-x-4 h-[105px] px-4 py-2" >
+          <Skeleton className="h-10 w-10 rounded-full" />
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-[450px]" />
+            <Skeleton className="h-4 w-[400px]" />
+          </div>   
+        </td>
+      </tr>
+    ))
   );
 };
 
