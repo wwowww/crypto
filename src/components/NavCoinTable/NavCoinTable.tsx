@@ -32,10 +32,10 @@ const NavCoinTable = () => {
   return (
     <div className='w-[358px]'>
       <div className='flex justify-between items-center mb-4'>
-        <SearchFilter globalFilter={globalFilter} setGlobalFilter={setGlobalFilter} />
+        <SearchFilter globalFilter={globalFilter} setGlobalFilter={setGlobalFilter} isNav />
       </div>
 
-      <table className="w-full table-fixed border-collapse border border-gray-300">
+      <table className="w-full table-fixed border-collapse border border-[#eee]">
         <thead>
           <TableHeader headerGroups={table.getHeaderGroups()} isNav />
         </thead>

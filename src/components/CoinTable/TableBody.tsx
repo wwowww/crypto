@@ -34,15 +34,9 @@ const TableBody = ({ rows, isNav=false }: TableBodyProps) => {
       <tr key={row.id} className="group hover:bg-[#f6f7f8]">
         {row.getVisibleCells().map((cell: any, index: number) => (
           <td key={cell.id} 
-              className={`px-4 py-2
-                          ${getColumnChildrenRoundedClass(index)}
-                          ${isNav ? 'px-0 py-0' : ''}
-                        `}>
+              className={`${isNav ? 'px-0 py-0 leading-[14px] border-b border-[#eee]' : 'px-4 py-2'} ${getColumnChildrenRoundedClass(index)}`}>
             <Link href={`${cell.row.original.id}`}>
-              <div className={`flex h-[88px] items-center  
-                                ${getColumnAlignmentClass(index)}
-                                ${isNav ? 'h-[64px]' : ''}
-                              `}>
+              <div className={`flex items-center ${getColumnAlignmentClass(index)} ${isNav ? 'h-[50px]' : 'h-[88px]'}`}>
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </div>
             </Link>
@@ -53,7 +47,7 @@ const TableBody = ({ rows, isNav=false }: TableBodyProps) => {
   ) : (
     range(0, 10)?.map((item: number) => (
       <tr key={"key"+item}>
-        <td className="flex items-center space-x-4 h-[105px] px-4 py-2" >
+        <td className={`flex items-center space-x-4 h-[105px] ${isNav ? 'px-0 py-0' : 'px-4 py-2'}`} >
           <Skeleton className="h-10 w-10 rounded-full" />
           <div className="space-y-2">
             <Skeleton className="h-4 w-[450px]" />
