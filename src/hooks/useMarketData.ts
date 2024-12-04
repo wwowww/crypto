@@ -5,7 +5,7 @@ import { Market } from "@/types";
 import { coinListAllMockData } from '@/data/coinListAllMockData';
 import { coinTrendingListMockData } from '@/data/coinTrendingListMockData';
 
-export const useMarketData = ({id, currency, days}: Market) => {
+export const useMarketData = ({id, currency}: Market) => {
   const { setMarketData } = useMarketStore();
 
   const { data: singleCoin } = useQuery({
