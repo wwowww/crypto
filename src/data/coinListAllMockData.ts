@@ -2,6 +2,7 @@ export const coinListAllMockData = [
   {
     id: "bitcoin",
     name: "Bitcoin",
+    symbol: "BTC",
     current_price: 45000,
     market_cap: 850000000000,
     price_change_percentage_24h: 2.5,
@@ -10,6 +11,7 @@ export const coinListAllMockData = [
   {
     id: "ethereum",
     name: "Ethereum",
+    symbol: "ETH",
     current_price: 3200,
     market_cap: 380000000000,
     price_change_percentage_24h: -1.2,
@@ -18,6 +20,7 @@ export const coinListAllMockData = [
   {
     id: "cardano",
     name: "Cardano",
+    symbol: "ADA",
     current_price: 2.5,
     market_cap: 80000000000,
     price_change_percentage_24h: 5.6,
@@ -26,6 +29,7 @@ export const coinListAllMockData = [
   {
     id: "solana",
     name: "Solana",
+    symbol: "SOL",
     current_price: 120,
     market_cap: 38000000000,
     price_change_percentage_24h: -3.1,
@@ -34,6 +38,7 @@ export const coinListAllMockData = [
   {
     id: "polkadot",
     name: "Polkadot",
+    symbol: "DOT",
     current_price: 30,
     market_cap: 34000000000,
     price_change_percentage_24h: 1.3,
@@ -42,6 +47,7 @@ export const coinListAllMockData = [
   {
     id: "ripple",
     name: "Ripple",
+    symbol: "XRP",
     current_price: 1.2,
     market_cap: 56000000000,
     price_change_percentage_24h: 0.7,
@@ -50,6 +56,7 @@ export const coinListAllMockData = [
   {
     id: "dogecoin",
     name: "Dogecoin",
+    symbol: "DOGE",
     current_price: 0.25,
     market_cap: 34000000000,
     price_change_percentage_24h: 3.1,
@@ -58,6 +65,7 @@ export const coinListAllMockData = [
   {
     id: "litecoin",
     name: "Litecoin",
+    symbol: "LTC",
     current_price: 180,
     market_cap: 12000000000,
     price_change_percentage_24h: -0.5,
@@ -66,6 +74,7 @@ export const coinListAllMockData = [
   {
     id: "uniswap",
     name: "Uniswap",
+    symbol: "UNI",
     current_price: 25,
     market_cap: 15000000000,
     price_change_percentage_24h: 6.2,
@@ -74,6 +83,7 @@ export const coinListAllMockData = [
   {
     id: "chainlink",
     name: "Chainlink",
+    symbol: "LINK",
     current_price: 35,
     market_cap: 16000000000,
     price_change_percentage_24h: -2.0,
@@ -82,6 +92,7 @@ export const coinListAllMockData = [
   {
     id: "bitcoin-cash",
     name: "Bitcoin Cash",
+    symbol: "BCH",
     current_price: 600,
     market_cap: 11000000000,
     price_change_percentage_24h: 1.5,
@@ -90,6 +101,7 @@ export const coinListAllMockData = [
   {
     id: "avalanche",
     name: "Avalanche",
+    symbol: "AVAX",
     current_price: 70,
     market_cap: 15000000000,
     price_change_percentage_24h: -1.0,
@@ -98,6 +110,7 @@ export const coinListAllMockData = [
   {
     id: "shiba-inu",
     name: "Shiba Inu",
+    symbol: "SHIB",
     current_price: 0.000025,
     market_cap: 15000000000,
     price_change_percentage_24h: 8.0,
@@ -106,6 +119,7 @@ export const coinListAllMockData = [
   {
     id: "terraluna",
     name: "Terra Luna",
+    symbol: "LUNA",
     current_price: 90,
     market_cap: 14000000000,
     price_change_percentage_24h: 2.8,
@@ -114,6 +128,7 @@ export const coinListAllMockData = [
   {
     id: "cosmos",
     name: "Cosmos",
+    symbol: "ATOM",
     current_price: 40,
     market_cap: 13000000000,
     price_change_percentage_24h: 5.1,
@@ -122,6 +137,7 @@ export const coinListAllMockData = [
   {
     id: "near-protocol",
     name: "Near Protocol",
+    symbol: "NEAR",
     current_price: 15,
     market_cap: 8000000000,
     price_change_percentage_24h: 0.9,
@@ -130,6 +146,7 @@ export const coinListAllMockData = [
   {
     id: "tron",
     name: "Tron",
+    symbol: "TRX",
     current_price: 0.1,
     market_cap: 7000000000,
     price_change_percentage_24h: -0.3,
@@ -138,6 +155,7 @@ export const coinListAllMockData = [
   {
     id: "monero",
     name: "Monero",
+    symbol: "XMR",
     current_price: 150,
     market_cap: 3000000000,
     price_change_percentage_24h: 0.8,
@@ -146,6 +164,7 @@ export const coinListAllMockData = [
   {
     id: "vechain",
     name: "VeChain",
+    symbol: "VET",
     current_price: 0.15,
     market_cap: 10000000000,
     price_change_percentage_24h: 3.3,
@@ -154,6 +173,7 @@ export const coinListAllMockData = [
   {
     id: "maker",
     name: "Maker",
+    symbol: "MKR",
     current_price: 4000,
     market_cap: 5000000000,
     price_change_percentage_24h: -1.5,
@@ -162,6 +182,7 @@ export const coinListAllMockData = [
   {
     id: "tezos",
     name: "Tezos",
+    symbol: "XTZ",
     current_price: 6,
     market_cap: 4500000000,
     price_change_percentage_24h: -2.2,
@@ -170,6 +191,7 @@ export const coinListAllMockData = [
   {
     id: "algorand",
     name: "Algorand",
+    symbol: "ALGO",
     current_price: 1.8,
     market_cap: 4000000000,
     price_change_percentage_24h: 0.5,
@@ -178,6 +200,7 @@ export const coinListAllMockData = [
   {
     id: "ftx-token",
     name: "FTX Token",
+    symbol: "FTT",
     current_price: 40,
     market_cap: 2500000000,
     price_change_percentage_24h: 2.1,
@@ -186,6 +209,7 @@ export const coinListAllMockData = [
   {
     id: "quant",
     name: "Quant",
+    symbol: "QNT",
     current_price: 60,
     market_cap: 1500000000,
     price_change_percentage_24h: -4.0,
@@ -194,6 +218,7 @@ export const coinListAllMockData = [
   {
     id: "aave",
     name: "Aave",
+    symbol: "AAVE",
     current_price: 350,
     market_cap: 1400000000,
     price_change_percentage_24h: 5.5,
@@ -202,6 +227,7 @@ export const coinListAllMockData = [
   {
     id: "sushi",
     name: "SushiSwap",
+    symbol: "SUSHI",
     current_price: 9,
     market_cap: 1300000000,
     price_change_percentage_24h: -0.9,
@@ -210,9 +236,10 @@ export const coinListAllMockData = [
   {
     id: "fantom",
     name: "Fantom",
+    symbol: "FTM",
     current_price: 2.0,
     market_cap: 1000000000,
     price_change_percentage_24h: -0.9,
     image: "https://assets.coingecko.com/coins/images/4001/standard/Fantom_round.png",
   },
-]
+];
