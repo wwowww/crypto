@@ -1,6 +1,6 @@
 export const formatCommasPrice = (price: number) => {
   // return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  return price.toLocaleString();
+  return price ? price.toLocaleString() : "-";
 }
 
 export const formatMarketCapPrice = (price: number, currency: string) => {
