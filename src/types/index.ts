@@ -5,7 +5,7 @@ export type Market = {
 }
 
 export type Chart = {
-  id?: string;
-  count?: number; 
+  market?: string;
+  count?: number;
   period?: 'minutes' | 'days' | 'weeks' | 'months' | string;
 }
