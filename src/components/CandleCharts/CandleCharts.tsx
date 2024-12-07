@@ -121,8 +121,8 @@ const CandleCharts = () => {
   const openCloseColor = (data: { close: number; open: number; }) => (data.close > data.open ? "#ef5350" : "#4387f9");
 
   return (
-    <div className="flex flex-col">
-      <div className="tabs border border-[#eee]">
+    <div className="flex flex-col border border-[#eee]">
+      <div className="tabs border-b border-[#eee]">
         <button className={`h-[38px] text-xs pr-[11px] pl-[11px] ${selectedTab === "minutes" ? "text-[#4387f9]": "text-gray-color"}`} onClick={() => handleTabClick("minutes")}>분</button>
         <button className={`h-[38px] text-xs pr-[11px] pl-[11px] ${selectedTab === "days" ? "text-[#4387f9]": "text-gray-color"}`} onClick={() => handleTabClick("days")}>일</button>
         <button className={`h-[38px] text-xs pr-[11px] pl-[11px] ${selectedTab === "weeks" ? "text-[#4387f9]": "text-gray-color"}`} onClick={() => handleTabClick("weeks")}>주</button>
@@ -187,7 +187,11 @@ const CandleCharts = () => {
             fontSize={10}
           />
           <MovingAverageTooltip
+            fontSize={10}
             origin={[8, 24]}
+            displayFormat={(value) => 
+              value < 1000 ? value.toLocaleString() : Number(value.toFixed(0)).toLocaleString()
+            }
             options={[
               {
                 yAccessor: ema26.accessor(),
@@ -204,7 +208,16 @@ const CandleCharts = () => {
             ]}
           />
           <ZoomButtons />
-          <OHLCTooltip origin={[8, 16]} />
+          <OHLCTooltip
+            origin={[8, 16]}
+            displayTexts={{o: "시", h: " 고", l:" 저", c: " 종", na: ""}}
+            ohlcFormat={(value) => {
+              return Number(value).toLocaleString();
+            }}
+            changeFormat={(value) => {
+              return Number(value).toLocaleString();
+            }}
+          />
         </Chart>
         <Chart
           id={3}
