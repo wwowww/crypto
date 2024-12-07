@@ -56,7 +56,7 @@ export const createColumns = (currency: string) => {
       header: '24시간 변동률',
       cell: (info) => {
         const { change, percentage } = info.getValue();
-        const formattedChange = change < 1000 ? change.toFixed(4) : Math.floor(change);
+        const formattedChange = change < 1000 ? change.toFixed(2) : Math.floor(change);
         const isNegative = change < 0;
         const sign = isNegative ? '' : '+';
         const textColor = isNegative ? 'text-blue-500' : 'text-red-500';
