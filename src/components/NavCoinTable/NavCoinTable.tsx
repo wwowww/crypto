@@ -34,23 +34,25 @@ const NavCoinTable = () => {
       <div className='flex justify-between items-center mb-4'>
         <SearchFilter globalFilter={globalFilter} setGlobalFilter={setGlobalFilter} isNav />
       </div>
-
-      <table className="w-full table-fixed border-collapse border border-[#eee]">
-        <thead>
-          <TableHeader headerGroups={table.getHeaderGroups()} isNav />
-        </thead>
-        <tbody>
-          {filteredData.length === 0 && globalFilter ? (
-            <tr>
-              <td className="w-[358px] flex flex-col items-center pt-[200px] pb-[160px] text-[20px] leading-[28px] text-[#93989e]">
-                검색된 가상 자산이 없습니다.
-              </td>
-            </tr>
-          ) : (
-            <TableBody rows={table.getRowModel().rows} isNav />
-          )}
-        </tbody>
-      </table>
+      <div className='h-[calc(100vh-170px)] overflow-y-scroll'>
+        <table className="w-full table-fixed border-collapse border border-[#eee] ">
+          <thead className='relative top-0 w-full'>
+            <TableHeader headerGroups={table.getHeaderGroups()} isNav />
+          </thead>
+          <tbody>
+            {filteredData.length === 0 && globalFilter ? (
+              <tr>
+                <td className="w-[358px] flex flex-col items-center pt-[200px] pb-[160px] text-[20px] leading-[28px] text-[#93989e]">
+                  검색된 가상 자산이 없습니다.
+                </td>
+              </tr>
+            ) : (
+              <TableBody rows={table.getRowModel().rows} isNav />
+            )}
+          </tbody>
+        </table>
+      </div>
+      
     </div>
   );
 };
