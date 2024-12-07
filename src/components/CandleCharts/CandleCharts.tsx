@@ -28,11 +28,10 @@ import { useChartData } from "@/hooks/useChartData";
 import { useParams } from "next/navigation";
 
 const CandleCharts = () => {
-  const [selectedTab, setSelectedTab] = useState<string>("minutes");
-  const [count, setCount] = useState<number>(30);
+  const chartInitCount = 120;
   const marketId = useParams();
-
-  console.log(marketId.id?.toString().toUpperCase(), "marketId")
+  const [selectedTab, setSelectedTab] = useState<string>("minutes");
+  const [count, setCount] = useState<number>(chartInitCount);
 
   const { chartData, isLoading, isError } = useChartData({
     count,
@@ -55,14 +54,11 @@ const CandleCharts = () => {
 
   const handleTabClick = (period: string) => {
     setSelectedTab(period);
-    if (period === "minutes") setCount(30);
-    else if (period === "days") setCount(30);
-    else if (period === "weeks") setCount(12);
-    else if (period === "months") setCount(6);
+    if (period === "minutes") setCount(chartInitCount);
+    else if (period === "days") setCount(90);
+    else if (period === "weeks") setCount(60);
+    else if (period === "months") setCount(24);
   };
-
-
-  console.log(chartData, "chartData")
 
   if (isLoading) return <div>로딩 중...</div>;
   if (isError || !Array.isArray(chartData) || chartData.length === 0)
@@ -87,11 +83,6 @@ const CandleCharts = () => {
   const elder = elderRay();
   const calculatedData = elder(ema26(ema12(transformedData)));
 
-  if (!Array.isArray(calculatedData)) {
-    console.error("calculatedData is not an array:", calculatedData);
-    return <div>계산된 데이터를 불러올 수 없습니다.</div>;
-  }
-
   const ScaleProvider = discontinuousTimeScaleProviderBuilder().inputDateAccessor(
     (d) => new Date(d.date)
   );
@@ -104,7 +95,7 @@ const CandleCharts = () => {
 
   const height = 700;
   const width = 900;
-  const margin = { left: 0, right: 48, top: 0, bottom: 24 };
+  const margin = { left: 0, right: 72, top: 0, bottom: 24 };
 
   const gridHeight = height - margin.top - margin.bottom;
   const elderRayHeight = 100;
@@ -113,116 +104,144 @@ const CandleCharts = () => {
   const barChartOrigin = (_: any, h: number) => [0, h - barChartHeight - elderRayHeight];
   const chartHeight = gridHeight - elderRayHeight;
 
-  const pricesDisplayFormat = format(".2f");
+  const formatWithCommas = (value: number) => {
+    if (value == null || isNaN(value)) return "-";
+  
+    return value.toLocaleString("en-US", {
+      minimumFractionDigits: value >= 1000 ? 0 : 2,
+      maximumFractionDigits: value >= 1000 ? 0 : 2,
+    });
+  };
+
   const dateTimeFormat = "%d %b";
   const timeDisplayFormat = timeFormat(dateTimeFormat);
 
   const volumeColor = (data: { close: number; open: number; }) =>
-    data.close > data.open ? "rgba(38, 166, 154, 0.3)" : "rgba(239, 83, 80, 0.3)";
-  const openCloseColor = (data: { close: number; open: number; }) => (data.close > data.open ? "#26a69a" : "#ef5350");
+    data.close > data.open ? "rgba(67, 135, 249, 0.3)" : "rgba(239, 83, 80, 0.3)";
+  const openCloseColor = (data: { close: number; open: number; }) => (data.close > data.open ? "#4387f9" : "#ef5350");
 
   return (
-    <ChartCanvas
-      height={height}
-      ratio={3}
-      width={width}
-      margin={margin}
-      data={data}
-      displayXAccessor={displayXAccessor}
-      seriesName="Financial Data"
-      xScale={xScale}
-      xAccessor={xAccessor}
-      xExtents={xExtents}
-      zoomAnchor={lastVisibleItemBasedZoomAnchor}
-    >
-      {/* 거래량 차트 */}
-      <Chart
-        id={1}
-        height={barChartHeight}
-        origin={barChartOrigin}
-        yExtents={(d) => d.volume}
+    <div className="flex flex-col">
+      <div className="tabs border border-[#eee]">
+        <button className={`h-[38px] text-xs pr-[11px] pl-[11px] ${selectedTab === "minutes" ? "text-[#4387f9]": "text-gray-color"}`} onClick={() => handleTabClick("minutes")}>분</button>
+        <button className={`h-[38px] text-xs pr-[11px] pl-[11px] ${selectedTab === "days" ? "text-[#4387f9]": "text-gray-color"}`} onClick={() => handleTabClick("days")}>일</button>
+        <button className={`h-[38px] text-xs pr-[11px] pl-[11px] ${selectedTab === "weeks" ? "text-[#4387f9]": "text-gray-color"}`} onClick={() => handleTabClick("weeks")}>주</button>
+        <button className={`h-[38px] text-xs pr-[11px] pl-[11px] ${selectedTab === "months" ? "text-[#4387f9]": "text-gray-color"}`} onClick={() => handleTabClick("months")}>월</button>
+      </div>
+      <ChartCanvas
+        height={height}
+        ratio={3}
+        width={width}
+        margin={margin}
+        data={data}
+        displayXAccessor={displayXAccessor}
+        seriesName="Financial Data"
+        xScale={xScale}
+        xAccessor={xAccessor}
+        xExtents={xExtents}
+        zoomAnchor={lastVisibleItemBasedZoomAnchor}
       >
-        <BarSeries fillStyle={volumeColor} yAccessor={(d) => d.volume} />
-      </Chart>
+        <Chart
+          id={1}
+          height={barChartHeight}
+          origin={barChartOrigin}
+          yExtents={(d) => d.volume}
+        >
+          <BarSeries fillStyle={volumeColor} yAccessor={(d) => d.volume} />
+        </Chart>
 
-      {/* 캔들스틱 차트 */}
-      <Chart id={2} height={chartHeight} yExtents={(d) => [d.high, d.low]}>
-        <XAxis showGridLines showTickLabel={false} />
-        <YAxis showGridLines tickFormat={pricesDisplayFormat} />
-        <CandlestickSeries />
-        <LineSeries yAccessor={ema26.accessor()} strokeStyle={ema26.stroke()} />
-        <CurrentCoordinate
-          yAccessor={ema26.accessor()}
-          fillStyle={ema26.stroke()}
-        />
-        <LineSeries yAccessor={ema12.accessor()} strokeStyle={ema12.stroke()} />
-        <CurrentCoordinate
-          yAccessor={ema12.accessor()}
-          fillStyle={ema12.stroke()}
-        />
-        <MouseCoordinateY
-          rectWidth={margin.right}
-          displayFormat={pricesDisplayFormat}
-        />
-        <EdgeIndicator
-          itemType="last"
-          rectWidth={margin.right}
-          fill={openCloseColor}
-          lineStroke={openCloseColor}
-          displayFormat={pricesDisplayFormat}
-          yAccessor={(d) => d.close}
-        />
-        <MovingAverageTooltip
-          origin={[8, 24]}
-          options={[
-            {
-              yAccessor: ema26.accessor(),
-              type: "EMA",
-              stroke: ema26.stroke(),
-              windowSize: ema26.options().windowSize,
-            },
-            {
-              yAccessor: ema12.accessor(),
-              type: "EMA",
-              stroke: ema12.stroke(),
-              windowSize: ema12.options().windowSize,
-            },
-          ]}
-        />
-        <ZoomButtons />
-        <OHLCTooltip origin={[8, 16]} />
-      </Chart>
+        <Chart id={2} height={chartHeight} yExtents={(d) => [d.high, d.low]}>
+          <XAxis showGridLines showTickLabel={false} strokeStyle="#eee" />
+          <YAxis
+            showGridLines
+            tickFormat={formatWithCommas}
+            tickLabelFill="#707882"
+            fontSize={10}
+            strokeStyle="#eee"
+            tickPadding={0}
+            showTicks={false}
+          />
+          <CandlestickSeries fill={openCloseColor} wickStroke={openCloseColor} />
+          <LineSeries yAccessor={ema26.accessor()} strokeStyle={ema26.stroke()} />
+          <CurrentCoordinate
+            yAccessor={ema26.accessor()}
+            fillStyle={ema26.stroke()}
+          />
+          <LineSeries yAccessor={ema12.accessor()} strokeStyle={ema12.stroke()} />
+          <CurrentCoordinate
+            yAccessor={ema12.accessor()}
+            fillStyle={ema12.stroke()}
+          />
+          <MouseCoordinateY
+            rectWidth={margin.right}
+            displayFormat={formatWithCommas}
+            fontSize={10}
+          />
+          <EdgeIndicator
+            itemType="last"
+            rectWidth={margin.right}
+            fill={openCloseColor}
+            lineStroke={openCloseColor}
+            displayFormat={formatWithCommas}
+            yAccessor={(d) => d.close}
+            fontSize={10}
+          />
+          <MovingAverageTooltip
+            origin={[8, 24]}
+            options={[
+              {
+                yAccessor: ema26.accessor(),
+                type: "EMA",
+                stroke: ema26.stroke(),
+                windowSize: ema26.options().windowSize,
+              },
+              {
+                yAccessor: ema12.accessor(),
+                type: "EMA",
+                stroke: ema12.stroke(),
+                windowSize: ema12.options().windowSize,
+              },
+            ]}
+          />
+          <ZoomButtons />
+          <OHLCTooltip origin={[8, 16]} />
+        </Chart>
+        <Chart
+          id={3}
+          height={elderRayHeight}
+          yExtents={[0, elder.accessor()]}
+          origin={elderRayOrigin}
+          padding={{ top: 20, bottom: 20 }}
+        >
+          <XAxis showGridLines gridLinesStrokeStyle="#eee" fontSize={10} tickLabelFill="#707882" strokeStyle="#eee" tickPadding={0} showTicks={false} />
+          <YAxis ticks={1} tickFormat={formatWithCommas} fontSize={10} tickLabelFill="#707882" strokeStyle="#eee" tickPadding={0} showTicks={false} />
+          <MouseCoordinateX displayFormat={timeDisplayFormat} />
+          <MouseCoordinateY
+            rectWidth={margin.right}
+            displayFormat={formatWithCommas}
+          />
+          <ElderRaySeries 
+            yAccessor={elder.accessor()}
+            fillStyle={{
+              bearPower: "#ef5350",
+              bullPower: "#4387f9",
+            }}
+            straightLineStrokeStyle="#eee"
+            straightLineStrokeDasharray="Solid"
+          /> 
+          <SingleValueTooltip
+            yAccessor={elder.accessor()}
+            yLabel="거래량(Elder Ray)"
+            valueFill="#707882"
+            labelFill="#707882"
+            yDisplayFormat={(d) => `매수: ${formatWithCommas(d.bullPower)}, 매도: ${formatWithCommas(d.bearPower)}`}
+            origin={[8, 16]}
+          />
+        </Chart>
 
-      {/* Elder Ray 차트 */}
-      <Chart
-        id={3}
-        height={elderRayHeight}
-        yExtents={[0, elder.accessor()]}
-        origin={elderRayOrigin}
-        padding={{ top: 8, bottom: 8 }}
-      >
-        <XAxis showGridLines gridLinesStrokeStyle="#e0e3eb" />
-        <YAxis ticks={4} tickFormat={pricesDisplayFormat} />
-        <MouseCoordinateX displayFormat={timeDisplayFormat} />
-        <MouseCoordinateY
-          rectWidth={margin.right}
-          displayFormat={pricesDisplayFormat}
-        />
-        <ElderRaySeries yAccessor={elder.accessor()} />
-        <SingleValueTooltip
-          yAccessor={elder.accessor()}
-          yLabel="Elder Ray"
-          yDisplayFormat={(d) =>
-            `${pricesDisplayFormat(d.bullPower)}, ${pricesDisplayFormat(
-              d.bearPower
-            )}`
-          }
-          origin={[8, 16]}
-        />
-      </Chart>
-
-      <CrossHairCursor />
-    </ChartCanvas>
+        <CrossHairCursor />
+      </ChartCanvas>
+    </div>
   );
 };
 
