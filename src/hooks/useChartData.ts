@@ -16,7 +16,8 @@ export const useChartData = ({ count, period, market }: Chart) => {
       console.error(error);
     },
     onSuccess: (data) => {
-      setChartData(data);
+      const reversedData = data.reverse();
+      setChartData(reversedData);
     },
   });
 

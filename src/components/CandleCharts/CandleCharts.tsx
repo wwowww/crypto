@@ -55,9 +55,9 @@ const CandleCharts = () => {
   const handleTabClick = (period: string) => {
     setSelectedTab(period);
     if (period === "minutes") setCount(chartInitCount);
-    else if (period === "days") setCount(90);
-    else if (period === "weeks") setCount(60);
-    else if (period === "months") setCount(24);
+    else if (period === "days") setCount(365);
+    else if (period === "weeks") setCount(104);
+    else if (period === "months") setCount(60);
   };
 
   if (isLoading) return <div>로딩 중...</div>;
@@ -117,8 +117,8 @@ const CandleCharts = () => {
   const timeDisplayFormat = timeFormat(dateTimeFormat);
 
   const volumeColor = (data: { close: number; open: number; }) =>
-    data.close > data.open ? "rgba(67, 135, 249, 0.3)" : "rgba(239, 83, 80, 0.3)";
-  const openCloseColor = (data: { close: number; open: number; }) => (data.close > data.open ? "#4387f9" : "#ef5350");
+    data.close > data.open ? "rgba(239, 83, 80, 0.3)" : "rgba(67, 135, 249, 0.3)";
+  const openCloseColor = (data: { close: number; open: number; }) => (data.close > data.open ? "#ef5350" : "#4387f9");
 
   return (
     <div className="flex flex-col">
