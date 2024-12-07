@@ -67,7 +67,7 @@ const CoinTable = () => {
         <SearchFilter globalFilter={globalFilter} setGlobalFilter={setGlobalFilter} />
       </div>
 
-      <table className="w-full">
+      <table className="w-full table-fixed">
         <thead>
           <TableHeader headerGroups={table.getHeaderGroups()} />
         </thead>

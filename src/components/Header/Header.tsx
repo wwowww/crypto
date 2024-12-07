@@ -1,3 +1,5 @@
+'use client';
+
 import LogoSVG from "@image/coin.svg";
 import {
   Select,
@@ -14,7 +16,7 @@ const Header = () => {
   const { currency, setCurrency } = useCurrencyStore();
   
   return (
-    <div className="flex items-center gap-5">
+    <div className="flex items-center gap-5 h-[64px] pr-8 pl-7 border-b border-[#e5e7eb]">
       <h1>
         <Link href="/" className="flex items-center gap-2">
           <LogoSVG className="h-10 w-10" />

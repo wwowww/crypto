@@ -32,7 +32,7 @@ const TableHeader = ({ headerGroups, isNav=false }: TableHeaderProps) => {
                 className={`cursor-pointer
                             ${isFirst && !isNav ? 'first:rounded-l-[10px] first:pl-5' : ''} 
                             ${isLast && !isNav ? 'last:rounded-r-[10px] last:pr-5' : ''}
-                            ${isNav ? 'pt-2 pb-1.5 first:pl-2 last:pr-2 text-[#a4a4a4] text-[12px] tracking-tighter border-b border-[#eee]' : 'pt-4 pb-4 bg-[#f8f9fa] border-b-2 border-white'}
+                            ${isNav ? 'sticky top-[-1px] pt-2 pb-1.5 first:pl-2 last:pr-2 text-[#a4a4a4] text-[12px] bg-white tracking-tighter before:content-[""] before:absolute before:top-0 before:left-0 before:w-full before:border-b before:border-solid before:border-gray-300 after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:border-t after:border-solid after:border-gray-300' : 'pt-4 pb-4 bg-[#f8f9fa] border-b-2 border-white'}
                           `}
               >
                 <div className={`flex items-center ${getColumnAlignmentClass(index)}
