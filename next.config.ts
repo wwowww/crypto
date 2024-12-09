@@ -21,6 +21,9 @@ const nextConfig = {
       },
     },
   },
+  env: {
+    NEON_DATABASE_URL: process.env.NEON_DATABASE_URL,
+  },
   reactStrictMode: false,
   swcMinify: true,
 };
