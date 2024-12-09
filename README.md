@@ -1,3 +1,6 @@
+[⭐️ Daily work log](https://kwoneunjee.notion.site/14ab6a7ed2da80d99364e143f0a9765c?v=14ab6a7ed2da81a7ad0a000cec76ad95)
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
