@@ -28,7 +28,7 @@ import { useChartData } from "@/hooks/useChartData";
 import { useParams } from "next/navigation";
 
 const CandleCharts = () => {
-  const chartInitCount = 120;
+  const chartInitCount = 300;
   const marketId = useParams();
   const [selectedTab, setSelectedTab] = useState<string>("minutes");
   const [count, setCount] = useState<number>(chartInitCount);
