@@ -12,18 +12,11 @@ import {
 import Link from "next/link";
 import { useCurrencyStore } from "@/stores/useCurrencyStore";
 import { useUserStore } from "@/stores/useUserStore";
-import { deleteSession } from "@/actions/sessions";
+import LogoutModalButton from "../auth/LogoutModalButton";
 
 const Header = () => {
   const { currency, setCurrency } = useCurrencyStore();
   const user = useUserStore((state) => state.user);
-  const updateUser = useUserStore((state) => state.updateUser);
-
-  const handleLogout = async () => {
-    await deleteSession();
-
-    updateUser(null);
-  };
   
   return (
     <div className="flex items-center gap-5 h-[64px] pr-8 pl-7 border-b border-[#e5e7eb]">
@@ -43,9 +36,7 @@ const Header = () => {
               <span className="text-4 font-medium">로그인</span>
             </Link>
           ) : (
-            <a className="text-4 font-medium" onClick={() => handleLogout()}>
-              로그아웃
-            </a>
+            <LogoutModalButton />
           )}
           
         </div>
