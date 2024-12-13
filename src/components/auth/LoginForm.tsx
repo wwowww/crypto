@@ -11,11 +11,12 @@ import { LoginFormError } from "@/types";
 import { LoginSchema } from "@/schemas/auth";
 import { login } from "@/actions/login";
 import toast from "react-hot-toast";
+import { useUserStore } from "@/stores/useUserStore";
 
 const LoginForm = () => {
   const [error, action] = useActionState(login, undefined);
-
   const { errors, validateField } = useFormValidate<LoginFormError>(LoginSchema);
+  const updateUser = useUserStore((state) => state.updateUser);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -26,7 +27,11 @@ const LoginForm = () => {
     if (error?.errorMessage) {
       toast.error(error.errorMessage)
     }
-  }, [error]);
+
+    if (error?.user) {
+      updateUser(error.user); 
+    }
+  }, [error, updateUser]);
 
   return (
     <FormCard
