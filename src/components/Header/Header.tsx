@@ -31,14 +31,13 @@ const Header = () => {
           <Link href="/btc">
             <span className="text-4 font-medium">거래소</span>
           </Link>
-          {!user ? (
+          {user?.id === "" || user === null ? (
             <Link href="/login">
               <span className="text-4 font-medium">로그인</span>
             </Link>
           ) : (
             <LogoutModalButton />
           )}
-          
         </div>
         <Select 
           value={currency}
