@@ -15,3 +15,8 @@ export type SignUpFormError = {
   email?:string[];
   password?:string[];
 }
+
+export type LoginFormError = {
+  email?:string[];
+  password?:string[];
+}
