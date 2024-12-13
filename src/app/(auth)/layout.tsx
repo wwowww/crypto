@@ -8,7 +8,7 @@ const AuthLayout = ({children}: {children: ReactNode}) => {
   const user = useUserStore((state) => state.user);
 
   useEffect(() => {
-    if (user.id) {
+    if (user && user.id) {
       redirect("/");
     }
   }, [user]);
