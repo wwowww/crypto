@@ -19,7 +19,6 @@ export const signUp = async (_: any, formData: FormData) => {
   }
 
   const { name, email, password } = validatedFields.data;
-  console.log(name, email, password, "name, email, password")
 
   try {
     const existingUser = await getUserByEmail(email);
