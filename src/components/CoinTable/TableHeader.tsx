@@ -1,4 +1,4 @@
-import TriangleSVG from '@/components/TriangleSVG/TriangleSVG';
+import TriangleSVG from '@/components/svg/TriangleSVG/TriangleSVG';
 import { flexRender } from '@tanstack/react-table';
 
 interface TableHeaderProps {
