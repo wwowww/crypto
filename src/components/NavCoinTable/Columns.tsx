@@ -1,5 +1,6 @@
 import { createColumnHelper } from '@tanstack/react-table';
 import { formatCurrency, formatMarketCapPrice } from "@/utils/formatPrice";
+import LikeButton from '@/components/Button/LikeButton';
 
 export const createColumns = (currency: string) => {
   const columnHelper = createColumnHelper<any>();
@@ -9,8 +10,10 @@ export const createColumns = (currency: string) => {
       header: '자산',
       cell: (info) => {
         const coin = info.row.original;
+
         return (
           <div className='flex items-center gap-3 pl-3'>
+            <LikeButton coinSymbol={coin.symbol} />
             <div>
               <h3 className='font-medium text-[12px] text-[#3d414b] line-clamp-2'>{coin.name}</h3>
               <span className='text-[11px] text-[#acb0b4]'>{coin.symbol.toUpperCase()}</span>
@@ -33,8 +36,8 @@ export const createColumns = (currency: string) => {
         const price = coin.current_price;
         const priceChange = coin.price_change_24h;
 
-        const isNegative = priceChange < 0;   
-        const textColor = isNegative ? 'text-blue-500' : 'text-red-500';       
+        const isNegative = priceChange < 0;
+        const textColor = isNegative ? 'text-blue-500' : 'text-red-500';
 
         return (
           <div className={`text-[12px] ${textColor}`}>
