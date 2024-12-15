@@ -1,34 +1,56 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { deleteAccount } from "@/actions/deleteAccount";
 import { useUserStore } from "@/stores/useUserStore";
+import { useModalStore } from "@/stores/useModalStore";
+import { Button } from "../ui/button";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";  // useRouter 훅 사용
 
-const DeleteAccountButton = () => {
-  const [isDeleting, setIsDeleting] = useState(false);
+type ButtonProps = {
+  className?: string;
+}
+
+const DeleteAccountButton = ({ className }: ButtonProps) => {
+  const { openModal, closeModal } = useModalStore();
   const updateUser = useUserStore((state) => state.updateUser);
+  const router = useRouter();
 
   const handleDelete = async () => {
-    setIsDeleting(true);
-
     try {
-      updateUser(null);
       await deleteAccount();
+      toast.success("회원탈퇴 되었습니다.");
+      updateUser(null);
+      closeModal();
+      router.push("/"); 
     } catch (error) {
-      window.location.href = "/login";
+      console.error(error);
+      toast.error("회원탈퇴에 실패했습니다.");
     }
+  };
 
-    setIsDeleting(false);
+  const ClickDeleteAccount = (event: any) => {
+    event.preventDefault();
+
+    openModal({
+      title: "회원탈퇴 하시겠습니까?",
+      footer: (
+        <>
+          <Button onClick={closeModal} variant="secondary">
+            취소
+          </Button>
+          <Button onClick={handleDelete} variant="destructive">
+            회원탈퇴
+          </Button>
+        </>
+      ),
+    });
   };
 
   return (
     <div>
-      <button 
-        onClick={handleDelete} 
-        disabled={isDeleting} 
-      >
-        {isDeleting ? "탈퇴 중..." : "회원 탈퇴"}
-      </button>
+      <button className={className} onClick={ClickDeleteAccount}>회원탈퇴</button>
     </div>
   );
 };
