@@ -17,3 +17,16 @@ export const getUserByEmail = async (email: string): Promise<User | null> => {
     throw new Error("문제가 발생했습니다.");
   }
 }
+
+export const getUserInfo = async (id: string) => {
+  try {
+    const userInfo = await db.query.user.findFirst({
+      where: eq(user.id, id),
+    });
+
+    return userInfo;
+
+  } catch (error) {
+    console.error("유저 정보를 불러오지 못했습니다.", error);
+  }
+}
