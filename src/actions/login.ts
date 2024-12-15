@@ -4,7 +4,6 @@ import bcrypt from "bcryptjs";
 import { getUserByEmail } from '@/data/user';
 import { LoginSchema } from '../schemas/auth';
 import { createSession } from "./sessions";
-import { redirect } from "next/navigation";
 
 export const login = async (_: any, formData: FormData) => {
   // 1. validate Fields
@@ -47,6 +46,4 @@ export const login = async (_: any, formData: FormData) => {
     console.error(error, "error");
     return { errorMessage: "문제가 발생했습니다." }
   }
-
-  redirect("/");
 }
