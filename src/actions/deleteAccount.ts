@@ -3,7 +3,6 @@
 import { db } from "@/db";
 import { user } from "@/db/schema";
 import { verifySession, deleteSession } from "@/actions/sessions";
-import { redirect } from "next/navigation";
 import { eq } from "drizzle-orm";
 
 export const deleteAccount = async () => {
@@ -26,7 +25,4 @@ export const deleteAccount = async () => {
   } catch (error) {
     console.error(error);
   }
-
-
-  redirect("/login"); 
 }
