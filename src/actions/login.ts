@@ -41,8 +41,8 @@ export const login = async (_: any, formData: FormData) => {
     }
 
     // 세션 생성
-    await createSession({ id, name });
-    return { user: { id, name } }; 
+    await createSession({ id, name, email });
+    return { user: { id, name, email } }; 
   } catch(error) {
     console.error(error, "error");
     return { errorMessage: "문제가 발생했습니다." }

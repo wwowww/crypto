@@ -10,6 +10,7 @@ const encodedKey = new TextEncoder().encode(secretKey);
 type SessionPayload = {
   id: string;
   name: string;
+  email: string;
 }
 
 export const encrypt = async (payload: SessionPayload) => {

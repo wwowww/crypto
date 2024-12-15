@@ -13,6 +13,7 @@ const useUserStore = create<State & Action>((set) => ({
   user: {
     id: "",
     name: "",
+    email: "",
   },
   updateUser: (user) => set({ user }),
 }))
