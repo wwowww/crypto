@@ -5,6 +5,9 @@ import { eq, and } from "drizzle-orm";
 
 export const addLike = async (symbol: string) => {
   const session = await verifySession();
+  
+  if (!session?.id) return null;
+
   const userId = session.id;
 
   const existingLike = await db
@@ -23,6 +26,9 @@ export const addLike = async (symbol: string) => {
 
 export const removeLike = async (symbol: string) => {
   const session = await verifySession();
+  
+  if (!session?.id) return null;
+
   const userId = session.id;
 
   await db
@@ -32,6 +38,9 @@ export const removeLike = async (symbol: string) => {
 
 export const checkLike = async (symbol: string) => {
   const session = await verifySession();
+  
+  if (!session?.id) return null;
+
   const userId = session.id;
 
   const existingLike = await db

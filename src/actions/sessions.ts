@@ -55,7 +55,7 @@ export const verifySession = async () => {
   const session = await verify(cookie);
 
   if (!session?.id) {
-    redirect("/login")
+    return null;
   }
 
   return session;
