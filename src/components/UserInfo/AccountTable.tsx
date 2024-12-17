@@ -1,7 +1,6 @@
 "use client";
 
 import { useUserStore } from "@/stores/useUserStore";
-import useUserData from "@/hooks/useUserData";
 
 const AccountTable = () => {
   const user = useUserStore((state) => state.user);
