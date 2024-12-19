@@ -21,7 +21,7 @@ export const like = pgTable("likes", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
-export const likeRelations = relations(like, ({ one, many }) => ({
+export const likeRelations = relations(like, ({ one }) => ({
   user: one(user, {
     fields: [like.userId],
     references: [user.id]
