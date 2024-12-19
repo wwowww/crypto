@@ -10,12 +10,12 @@ export const useChartData = ({ count, period, market }: Chart) => {
     queryKey: ["chartData", period, count, market],
     queryFn: async () => {
       const data = await fetchMarketCandlePeriod({count, period, market});
-      return data;
+      return data.reverse();
     },
-    onError: (error) => {
+    onError: (error: any) => {
       console.error(error);
     },
-    onSuccess: (data) => {
+    onSuccess: (data: any) => {
       const reversedData = data.reverse();
       setChartData(reversedData);
     },
