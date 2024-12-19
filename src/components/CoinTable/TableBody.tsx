@@ -30,7 +30,7 @@ const TableBody = ({ rows, isNav=false }: TableBodyProps) => {
   };
 
   return rows.length !== 0 ? (
-    rows.map((row, rowIndex) => (
+    rows.map((row) => (
       <tr key={row.id} className="group hover:bg-[#f6f7f8]">
         {row.getVisibleCells().map((cell: any, cellIndex: number) => (
           <td
@@ -43,7 +43,7 @@ const TableBody = ({ rows, isNav=false }: TableBodyProps) => {
               </div>
             ) : (
               <Link href={`${cell.row.original.symbol}`}>
-                <div className={`flex items-center ${getColumnAlignmentClass(cellIndex)} ${isNav ? 'h-[50px]' : 'h-[88px]'}`}>
+                <div className={`flex items-center ${getColumnAlignmentClass(cellIndex)} ${isNav ? 'h-[50px] text-right' : 'h-[88px]'}`}>
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </div>
               </Link>

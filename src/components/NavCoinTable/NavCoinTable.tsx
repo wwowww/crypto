@@ -34,8 +34,8 @@ const NavCoinTable = () => {
       <div className='flex justify-between items-center mb-4'>
         <SearchFilter globalFilter={globalFilter} setGlobalFilter={setGlobalFilter} isNav />
       </div>
-      <div className='h-[calc(100vh-170px)] overflow-y-scroll'>
-        <table className="w-full table-fixed border-collapse border border-[#eee] ">
+      <div className='h-[calc(100vh-170px)] overflow-y-scroll border-b border-[#eee]'>
+        <table className="w-full table-fixed border-collapse border border-[#eee]">
           <thead className='relative top-0 w-full'>
             <TableHeader headerGroups={table.getHeaderGroups()} isNav />
           </thead>

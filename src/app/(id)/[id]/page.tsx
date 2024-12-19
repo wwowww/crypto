@@ -9,9 +9,8 @@ const CandleChart = dynamic(() => import("@/components/CandleCharts/CandleCharts
 
 export default function MarketPage() {
   return (
-    <div className='flex'>
-      {/* <NavCoinTable /> */}
-      
+    <div className='flex gap-3'>
+      <NavCoinTable />
       <CandleChart />
     </div>
   );

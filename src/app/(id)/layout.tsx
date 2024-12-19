@@ -4,7 +4,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div>
+    <div className="py-10 w-[1200px] mx-auto">
       {children}
     </div>
   );
