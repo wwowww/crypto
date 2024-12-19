@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useMemo } from 'react';
 import { useReactTable, SortingState, getCoreRowModel, getSortedRowModel, getFilteredRowModel, getPaginationRowModel, PaginationState } from '@tanstack/react-table';
 import { useCurrencyStore } from '@/stores/useCurrencyStore';
