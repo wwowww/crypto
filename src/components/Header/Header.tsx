@@ -44,12 +44,12 @@ const Header = () => {
           onValueChange={(value: any) => setCurrency(value)}
         >
           <SelectTrigger className="w-[80px]">
-            <SelectValue placeholder="KR" />
+            <SelectValue placeholder="KRW" />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectItem value={'KRW'}>KR</SelectItem>
-              <SelectItem value={'USD'}>EN</SelectItem>
+              <SelectItem value={'KRW'}>KRW</SelectItem>
+              <SelectItem value={'USD'}>USD</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>
