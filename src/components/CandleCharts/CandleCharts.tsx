@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { format } from "d3-format";
 import { timeFormat } from "d3-time-format";
 import {
   elderRay,
@@ -94,7 +93,7 @@ const CandleCharts = () => {
   ];
 
   const height = 700;
-  const width = 900;
+  const width = 840;
   const margin = { left: 0, right: 72, top: 0, bottom: 24 };
 
   const gridHeight = height - margin.top - margin.bottom;
