@@ -246,7 +246,7 @@ const CandleCharts = () => {
             yLabel="거래량(Elder Ray)"
             valueFill="#707882"
             labelFill="#707882"
-            yDisplayFormat={(d) => `매수: ${formatWithCommas(d.bullPower)}, 매도: ${formatWithCommas(d.bearPower)}`}
+            yDisplayFormat={(d) => `매수: ${formatWithCommas(Math.max(d))}, 매도: ${formatWithCommas(Math.min(d))}`}
             origin={[8, 16]}
           />
         </Chart>
