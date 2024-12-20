@@ -1,8 +1,11 @@
+'use client';
+
 import LogoutModalButton from "@/components/auth/LogoutModalButton";
 import DeleteAccountButton from "@/components/Button/DeleteAccountButton";
 import AccountTable from "@/components/UserInfo/AccountTable";
+import { useParams } from "next/navigation";
 
-const MyPage = ({params}: { params: { id: string } }) => {
+const MyPage = () => {
   return (
     <>
       <div>
