@@ -76,7 +76,7 @@ const CoinTable = () => {
         <tbody>
           {filteredData.length === 0 && globalFilter ? (
             <tr>
-              <td className="w-[246%] flex flex-col items-center pt-[200px] pb-[160px] text-[20px] leading-[28px] text-[#93989e]">
+              <td className="w-[1200px] flex flex-col items-center pt-[200px] pb-[160px] text-[20px] leading-[28px] text-[#93989e]">
                 검색된 가상 자산이 없습니다.
               </td>
             </tr>

@@ -41,8 +41,8 @@ const NavCoinTable = () => {
           </thead>
           <tbody>
             {filteredData.length === 0 && globalFilter ? (
-              <tr>
-                <td className="w-[358px] flex flex-col items-center pt-[200px] pb-[160px] text-[20px] leading-[28px] text-[#93989e]">
+              <tr className=''>
+                <td className="w-[350px] h-[calc(100vh-206px)] flex flex-col items-center pt-[200px] pb-[160px] text-4 leading-[28px] text-[#93989e]">
                   검색된 가상 자산이 없습니다.
                 </td>
               </tr>
