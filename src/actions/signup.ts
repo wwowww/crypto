@@ -5,6 +5,7 @@ import { getUserByEmail } from "@/data/user";
 import { SignUpSchema } from "@/schemas/auth";
 import { db } from "@/db";
 import { user } from "@/db/schema";
+import { redirect } from "next/navigation";
 
 export const signUp = async (_: any, formData: FormData) => {
   // 1. validate Fields 필드 유효성 검사를 서버에서 다시 한 번 검증
@@ -42,4 +43,6 @@ export const signUp = async (_: any, formData: FormData) => {
     console.error(error, "error");
     return { errorMessage: "문제가 발생했습니다." }
   }
+
+  redirect("/login?signupSuccess=true");
 }

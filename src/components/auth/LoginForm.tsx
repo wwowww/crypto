@@ -12,11 +12,13 @@ import { LoginSchema } from "@/schemas/auth";
 import { login } from "@/actions/login";
 import toast from "react-hot-toast";
 import { useUserStore } from "@/stores/useUserStore";
+import { useSearchParams } from "next/navigation";
 
 const LoginForm = () => {
   const [error, action] = useActionState(login, undefined);
   const { errors, validateField } = useFormValidate<LoginFormError>(LoginSchema);
   const updateUser = useUserStore((state) => state.updateUser);
+  const searchParams = useSearchParams();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -31,7 +33,11 @@ const LoginForm = () => {
     if (error?.user) {
       updateUser(error.user); 
     }
-  }, [error, updateUser]);
+
+    if (searchParams.get("signupSuccess") === "true") {
+      toast.success("회원가입이 완료되었습니다. 로그인 해주세요.");
+    }
+  }, [error, updateUser, searchParams]);
 
   return (
     <FormCard
