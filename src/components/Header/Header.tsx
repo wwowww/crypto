@@ -42,9 +42,11 @@ const Header = () => {
             )}
           </div>
           <div className="flex gap-3">
-          {(user?.id !== "" || user !== null) && (
+            {user?.id === "" || user === null ? (
+              <></>
+            ) : (
               <Link href={`/mypage/${user?.id}`}>
-                <span className="block text-4 font-medium w-9 h-9 text-center flex items-center justify-center text-white bg-[#83a7bd] rounded-full">{user?.name?.charAt(0)}</span>
+                <span className="text-4 font-medium w-9 h-9 text-center flex items-center justify-center text-white bg-[#83a7bd] rounded-full">{user?.name?.charAt(0)}</span>
               </Link>
             )}
             <Select 
