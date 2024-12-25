@@ -3,7 +3,6 @@
 import LogoutModalButton from "@/components/auth/LogoutModalButton";
 import DeleteAccountButton from "@/components/Button/DeleteAccountButton";
 import AccountTable from "@/components/UserInfo/AccountTable";
-import { useParams } from "next/navigation";
 
 const MyPage = () => {
   return (

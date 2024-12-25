@@ -18,7 +18,6 @@ const Header = () => {
   const { currency, setCurrency } = useCurrencyStore();
   const user = useUserStore((state) => state.user);
   
-  console.log(user, "user")
   return (
     <header className="sticky top-0 z-10 bg-white border-b border-[#e5e7eb]">
       <div className="flex gap-5 items-center h-16 justify-between mx-auto px-[32px] py-0 w-[1264px]">
