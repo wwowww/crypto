@@ -59,7 +59,7 @@ export const createColumns = (currency: string) => {
         const textColor = isNegative ? 'text-blue-500' : 'text-red-500';
 
         return (
-          <div className={`text-[12px] ${textColor}`}>
+          <div className={`text-[12px] pr-2 ${textColor}`}>
             {sign}{percentage.toFixed(2)}%
           </div>
         );

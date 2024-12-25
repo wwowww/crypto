@@ -31,7 +31,7 @@ const Header = () => {
         <nav className="w-full flex justify-between items-center">
           <div className="flex gap-2">
             <Link href="/btc">
-              <span className="text-4 font-medium">거래소</span>
+              <span className="text-4 font-medium p-2">거래소</span>
             </Link>
             {user?.id === "" || user === null ? (
               <Link href="/login">
