@@ -65,8 +65,8 @@ export const createColumns = (currency: string) => {
           <div className={`relative mr-4 text-[17px] ${textColor}`}>
             {sign}{formatCurrency(Number(formattedChange), currency)} ({sign}{percentage.toFixed(2)}%)
             <span
-              className={`absolute right-[-14px] top-0 transform -translate-y-1/2 
-              ${isNegative ? 'after:border-b-[#4386f9]' : 'after:border-b-[#f75457]'} 
+              className={`absolute right-[-14px] top-0 transform 
+              ${isNegative ? 'after:border-b-[#4386f9] rotate-[180deg] translate-y-1/2' : 'after:border-b-[#f75457] -translate-y-1/2'} 
               after:content-[''] after:border-r-[5px] after:border-l-[5px] after:border-transparent after:border-b-[7px]`}
             />
           </div>
