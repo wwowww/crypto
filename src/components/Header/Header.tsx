@@ -18,6 +18,7 @@ const Header = () => {
   const { currency, setCurrency } = useCurrencyStore();
   const user = useUserStore((state) => state.user);
   
+  console.log(user, "user")
   return (
     <header className="sticky top-0 z-10 bg-white border-b border-[#e5e7eb]">
       <div className="flex gap-5 items-center h-16 justify-between mx-auto px-[32px] py-0 w-[1264px]">
@@ -40,20 +41,27 @@ const Header = () => {
               <LogoutModalButton />
             )}
           </div>
-          <Select 
-            value={currency}
-            onValueChange={(value: any) => setCurrency(value)}
-          >
-            <SelectTrigger className="w-[80px]">
-              <SelectValue placeholder="KRW" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                <SelectItem value={'KRW'}>KRW</SelectItem>
-                <SelectItem value={'USD'}>USD</SelectItem>
-              </SelectGroup>
-            </SelectContent>
-          </Select>
+          <div className="flex gap-3">
+          {(user?.id !== "" || user !== null) && (
+              <Link href={`/mypage/${user?.id}`}>
+                <span className="block text-4 font-medium w-9 h-9 text-center flex items-center justify-center text-white bg-[#83a7bd] rounded-full">{user?.name?.charAt(0)}</span>
+              </Link>
+            )}
+            <Select 
+              value={currency}
+              onValueChange={(value: any) => setCurrency(value)}
+            >
+              <SelectTrigger className="w-[80px]">
+                <SelectValue placeholder="KRW" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectItem value={'KRW'}>KRW</SelectItem>
+                  <SelectItem value={'USD'}>USD</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
         </nav>
       </div>
     </header>

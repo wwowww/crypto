@@ -35,7 +35,7 @@ const TableBody = ({ rows, isNav=false }: TableBodyProps) => {
         {row.getVisibleCells().map((cell: any, cellIndex: number) => (
           <td
             key={cell.id}
-            className={`${isNav ? 'px-0 py-0 leading-[14px] border-b border-[#eee]' : 'px-4 py-2'} ${getColumnChildrenRoundedClass(cellIndex)}`}
+            className={`${isNav ? 'px-0 py-0 leading-[14px] border-b border-[#eee] w-1/4' : 'px-4 py-2'} ${getColumnChildrenRoundedClass(cellIndex)}`}
           >
             {cellIndex === 0 ? (
               <div className={`flex items-center ${getColumnAlignmentClass(cellIndex)} ${isNav ? 'h-[50px]' : 'h-[88px]'}`}>
