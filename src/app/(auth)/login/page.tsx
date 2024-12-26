@@ -1,11 +1,10 @@
-import { Suspense } from "react";
+'use client';
+
 import LoginForm from "@/components/auth/LoginForm";
 
 const LoginPage = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <LoginForm />
-    </Suspense>
+    <LoginForm />
   );
 };
 
