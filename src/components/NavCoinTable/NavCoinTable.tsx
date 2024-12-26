@@ -37,7 +37,7 @@ const NavCoinTable = () => {
       </div>
       <div className='h-[calc(100vh-170px)] border-b border-[#eee]'>
         <table className="relative w-full table-fixed border-collapse border border-[#eee]">
-          <thead className='absolute top-[-1px] left-[1px] w-[calc(100%-1px)]'>
+          <thead className='absolute top-[-1px] left-[1px] w-[calc(100%-2px)]'>
             <TableHeader headerGroups={table.getHeaderGroups()} isNav />
           </thead>
           <tbody className="block h-[100vh] overflow-y-scroll mt-[32px] max-h-[calc(100vh-204px)]">

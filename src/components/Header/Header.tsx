@@ -8,7 +8,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 import Link from "next/link";
 import { useCurrencyStore } from "@/stores/useCurrencyStore";
 import { useUserStore } from "@/stores/useUserStore";
@@ -30,14 +30,14 @@ const Header = () => {
         <nav className="w-full flex justify-between items-center">
           <div className="flex gap-2">
             <Link href="/btc">
-              <span className="text-4 font-medium p-2">거래소</span>
+              <span className="block text-4 font-medium p-1">거래소</span>
             </Link>
             {user?.id === "" || user === null ? (
               <Link href="/login">
-                <span className="text-4 font-medium">로그인</span>
+                <span className="block text-4 font-medium p-1">로그인</span>
               </Link>
             ) : (
-              <LogoutModalButton />
+              <LogoutModalButton className="p-1" />
             )}
           </div>
           <div className="flex gap-3">

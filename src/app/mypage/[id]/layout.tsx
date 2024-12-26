@@ -14,7 +14,7 @@ const RootLayout = ({children}: {children: ReactNode}) => {
   }, [user]);
   
   return (
-    <div className="h-full p-10 py-[64px] w-[1200px] my-[48px] mx-auto">{children}</div>
+    <div className="h-full py-[64px] w-[1200px] my-[48px] mx-auto">{children}</div>
   );
 }
 
