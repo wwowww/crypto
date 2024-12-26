@@ -1,10 +1,12 @@
-'use client';
-
 import LoginForm from "@/components/auth/LoginForm";
+import Spinner from "@/components/Skeleton/Spinner";
+import { Suspense } from "react";
 
 const LoginPage = () => {
   return (
-    <LoginForm />
+    <Suspense fallback={<Spinner />}>
+      <LoginForm />
+    </Suspense>
   );
 };
 
