@@ -25,7 +25,7 @@ export const useMarketData = ({id, currency}: Market) => {
       if (!currency) return null;
       try {
         const response = await fetchMarketCoinListAllData(currency);
-        return coinListAllMockData;
+
         return response.data;
       } catch (error: any) {
         if (error.response?.status === 429) {
@@ -50,7 +50,6 @@ export const useMarketData = ({id, currency}: Market) => {
         const response = await fetchMarketTrendingCoinData(currency);
         setMarketData(response);
 
-        return coinTrendingListMockData.sort(() => Math.random() - 0.5);
         return response.data.sort(() => Math.random() - 0.5);
       } catch(error: any) {
         if (error.response?.status === 429) {
