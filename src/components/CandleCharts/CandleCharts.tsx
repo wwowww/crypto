@@ -25,6 +25,7 @@ import {
 } from "react-financial-charts";
 import { useChartData } from "@/hooks/useChartData";
 import { useParams } from "next/navigation";
+import Spinner from "@/components/Skeleton/Spinner";
 
 const CandleCharts = () => {
   const chartInitCount = 300;
@@ -59,9 +60,10 @@ const CandleCharts = () => {
     else if (period === "months") setCount(60);
   };
 
-  if (isLoading) return <div>로딩 중...</div>;
-  if (isError || !Array.isArray(chartData) || chartData.length === 0)
-    return <div>차트를 불러올 수 없습니다.</div>;
+  if (isLoading) return <Spinner className="flex items-center justify-center w-[calc(100%-370px)]" />;
+  if (isError || !Array.isArray(chartData) || chartData.length === 0) {
+    return <div className="flex items-center justify-center w-[calc(100%-370px)] text-center">차트를 불러올 수 없습니다.<br/>다시 시도해주세요.</div>;
+  }
 
   const ema12 = ema()
     .id(1)

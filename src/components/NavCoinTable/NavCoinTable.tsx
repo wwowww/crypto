@@ -40,10 +40,10 @@ const NavCoinTable = () => {
           <thead className='absolute top-[-1px] left-[1px] w-[calc(100%-1px)]'>
             <TableHeader headerGroups={table.getHeaderGroups()} isNav />
           </thead>
-          <tbody className="block overflow-y-scroll mt-[32px] max-h-[calc(100vh-204px)]">
+          <tbody className="block h-[100vh] overflow-y-scroll mt-[32px] max-h-[calc(100vh-204px)]">
             {filteredData.length === 0 && globalFilter ? (
               <tr>
-                <td className="w-[350px] h-[calc(100vh-206px)] flex flex-col items-center pt-[200px] pb-[160px] text-4 leading-[28px] text-[#93989e]">
+                <td className="w-[182%] h-[calc(100vh-206px)] flex flex-col items-center pt-[200px] pb-[160px] text-4 leading-[28px] text-[#93989e]">
                   검색된 가상 자산이 없습니다.
                 </td>
               </tr>
