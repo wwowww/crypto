@@ -1,9 +1,11 @@
 import { createColumnHelper } from '@tanstack/react-table';
 import { formatCurrency, formatMarketCapPrice } from "@/utils/formatPrice";
+import LikeButton from '../Button/LikeButton';
+import { useUserStore } from '@/stores/useUserStore';
 
 export const createColumns = (currency: string) => {
   const columnHelper = createColumnHelper<any>();
-
+  
   return [
     columnHelper.accessor('name', {
       header: '가상자산명',
@@ -11,6 +13,7 @@ export const createColumns = (currency: string) => {
         const coin = info.row.original;
         return (
           <div className='flex items-center gap-3'>
+            <LikeButton coinSymbol={coin.symbol} />
             <img
               src={coin.image}
               alt={coin.name}
