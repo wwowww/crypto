@@ -3,7 +3,7 @@ import { addLike, removeLike, checkLike } from "@/actions/likes"; // 서버 사�
 import HeartSVG from '@/components/svg/HeartSVG/HeartSVG';
 import { debounce } from 'lodash';
 import { useUserStore } from '@/stores/useUserStore';
-import useUserData from '@/hooks/useUserData';
+import { toast } from 'react-hot-toast';
 
 interface LikeButtonProps {
   coinSymbol: string;
@@ -15,9 +15,6 @@ const LikeButton = ({ coinSymbol }: LikeButtonProps) => {
 
   const user = useUserStore((state) => state.user);
 
-  const userId = user?.id ?? null;
-  const { data } = useUserData(userId);
-  
   const checkIfLiked = debounce(async (symbol: string) => {
     const liked = await checkLike(symbol);
     liked !== null && setIsLiked(liked);
@@ -29,14 +26,19 @@ const LikeButton = ({ coinSymbol }: LikeButtonProps) => {
     }
   }, [coinSymbol, checkIfLiked]);
 
-  if (data === null || user === null) return null;
-
   const handleLikeToggle = async () => {
     if (isUpdating) return;
+
+    if (!user) {
+      toast.error('로그인 후 이용가능합니다.');
+      return;
+    }
+
     setIsUpdating(true);
 
     const newLikedState = !isLiked;
     setIsLiked(newLikedState);
+
     try {
       if (newLikedState) {
         await addLike(coinSymbol);
