@@ -43,7 +43,7 @@ const TableBody = ({ rows, isNav=false }: TableBodyProps) => {
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </div>
             ) : (
-              <Link href={`${cell.row.original.symbol}`}>
+              <Link href={`/${cell.row.original.symbol}`}>
                 <div className={`flex items-center ${getColumnAlignmentClass(cellIndex)} ${isNav ? 'h-[50px] text-right' : 'h-[88px]'}`}>
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </div>
