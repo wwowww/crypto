@@ -34,6 +34,8 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    {children}
+    <div className="py-10 w-[1200px] mx-auto">
+      {children}
+    </div>
   );
 }
