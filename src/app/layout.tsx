@@ -20,7 +20,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "가상자산 플랫폼 | Coin Market",
-  description: "Coin Market",
+  description: "Coin Market에서 코인 시세를 확인해보세요.",
 };
 
 export default function RootLayout({
