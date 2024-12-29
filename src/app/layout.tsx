@@ -21,7 +21,6 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "가상자산 플랫폼 | Coin Market",
   description: "Coin Market에서 코인 시세를 확인해보세요.",
-  robots: "index, follow",
   openGraph: {
     type: "website",
     url: "https://crypto-git-main-eunjees-projects.vercel.app",
@@ -29,6 +28,10 @@ export const metadata: Metadata = {
     description: "Coin Market에서 코인 시세를 확인해보세요.",
     siteName: "Coin Market",
     images: ['https://raw.githubusercontent.com/wwowww/crypto/b2e6f9c9ac0308d62f6b3c22a427347d5391e388/public/og.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
