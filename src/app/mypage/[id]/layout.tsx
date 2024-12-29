@@ -12,6 +12,10 @@ export const metadata: Metadata = {
     siteName: "Coin Market",
     images: ["https://raw.githubusercontent.com/wwowww/crypto/b2e6f9c9ac0308d62f6b3c22a427347d5391e388/public/og.jpg"],
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 
