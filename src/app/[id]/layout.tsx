@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
     }
   }
   const product = coinListAll.find((item: any) => item.symbol === id);
-  
+
   if (!product) {
     return {
       title: 'Coin Market',
@@ -36,6 +36,12 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
         description: "Coin Market에서 코인 시세를 확인해보세요.",
         siteName: "Coin Market",
         images: ["https://raw.githubusercontent.com/wwowww/crypto/b2e6f9c9ac0308d62f6b3c22a427347d5391e388/public/og.jpg"],
+      },
+      robots: {
+        index: true,
+        googleBot: {
+          index: true,
+        },
       },
     };
   }
@@ -51,6 +57,12 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
       siteName: "Coin Market",
       images: [product?.image || 'https://raw.githubusercontent.com/wwowww/crypto/b2e6f9c9ac0308d62f6b3c22a427347d5391e388/public/og.jpg'],
     },
+    robots: {
+	    index: true,
+	    googleBot: {
+	      index: true,
+	    },
+	  },
   };
 }
 
