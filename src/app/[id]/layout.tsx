@@ -58,11 +58,11 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
       images: [product?.image || 'https://raw.githubusercontent.com/wwowww/crypto/b2e6f9c9ac0308d62f6b3c22a427347d5391e388/public/og.jpg'],
     },
     robots: {
-	    index: true,
-	    googleBot: {
-	      index: true,
-	    },
-	  },
+      index: true,
+      googleBot: {
+        index: true,
+      },
+    },
   };
 }
 
