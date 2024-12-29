@@ -40,11 +40,12 @@ const TableHeader = ({ headerGroups, isNav=false }: TableHeaderProps) => {
                               `}>
                   {flexRender(header.column.columnDef.header, header.getContext())}
                   <div className='flex flex-col gap-0.5'>
-                    <button>
+                    <button value="asc">
                       <TriangleSVG color={header.column.getIsSorted() === 'asc' ? '#636363' : '#b5b5b5'} />
                     </button>
                     <button
                       className='transform rotate-180'
+                      value="desc"
                     >
                       <TriangleSVG color={header.column.getIsSorted() === 'desc' ? '#636363' : '#b5b5b5'} />
                     </button>

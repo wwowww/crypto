@@ -29,10 +29,10 @@ const LogoutModalButton = ({ className }: { className?: string }) => {
       title: "로그아웃 하시겠습니까?",
       footer: (
         <>
-          <Button onClick={closeModal} variant="secondary">
+          <Button onClick={closeModal} variant="secondary" value="취소">
             취소
           </Button>
-          <Button onClick={handleDelete} variant="destructive">
+          <Button onClick={handleDelete} variant="destructive" value="로그아웃">
             로그아웃
           </Button>
         </>

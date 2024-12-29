@@ -37,10 +37,10 @@ const DeleteAccountButton = ({ className }: ButtonProps) => {
       title: "회원탈퇴 하시겠습니까?",
       footer: (
         <>
-          <Button onClick={closeModal} variant="secondary">
+          <Button onClick={closeModal} variant="secondary" value="취소">
             취소
           </Button>
-          <Button onClick={handleDelete} variant="destructive">
+          <Button onClick={handleDelete} variant="destructive" value="회원탈퇴">
             회원탈퇴
           </Button>
         </>
@@ -50,7 +50,7 @@ const DeleteAccountButton = ({ className }: ButtonProps) => {
 
   return (
     <div>
-      <button className={className} onClick={ClickDeleteAccount}>회원탈퇴</button>
+      <button className={className} onClick={ClickDeleteAccount} value="회원탈퇴">회원탈퇴</button>
     </div>
   );
 };

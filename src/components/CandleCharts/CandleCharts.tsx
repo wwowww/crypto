@@ -124,7 +124,7 @@ const CandleCharts = () => {
   return (
     <div className="flex flex-col border border-[#eee]">
       <div className="tabs border-b border-[#eee]">
-        <button className={`h-[38px] text-xs pr-[11px] pl-[11px] ${selectedTab === "minutes" ? "text-[#4387f9]": "text-gray-color"}`} onClick={() => handleTabClick("minutes")}>분</button>
+        <button className={`h-[38px] text-xs pr-[11px] pl-[11px] ${selectedTab === "minutes" ? "text-[#4387f9]": "text-gray-color"}`} onClick={() => handleTabClick("minutes")} value="">분</button>
         <button className={`h-[38px] text-xs pr-[11px] pl-[11px] ${selectedTab === "days" ? "text-[#4387f9]": "text-gray-color"}`} onClick={() => handleTabClick("days")}>일</button>
         <button className={`h-[38px] text-xs pr-[11px] pl-[11px] ${selectedTab === "weeks" ? "text-[#4387f9]": "text-gray-color"}`} onClick={() => handleTabClick("weeks")}>주</button>
         <button className={`h-[38px] text-xs pr-[11px] pl-[11px] ${selectedTab === "months" ? "text-[#4387f9]": "text-gray-color"}`} onClick={() => handleTabClick("months")}>월</button>
