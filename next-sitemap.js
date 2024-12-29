@@ -1,4 +1,4 @@
 module.exports = {
-  siteUrl: 'https://crypto-nlrot22ak-eunjees-projects.vercel.app',
+  siteUrl: process.env.SITE_URL || 'https://crypto-nlrot22ak-eunjees-projects.vercel.app',
   generateRobotsTxt: true,
 };
