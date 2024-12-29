@@ -4,8 +4,19 @@ import LogoutModalButton from "@/components/auth/LogoutModalButton";
 import DeleteAccountButton from "@/components/Button/DeleteAccountButton";
 import LikedCoinsTable from "@/components/CoinTable/LikedCoinsTable";
 import AccountTable from "@/components/UserInfo/AccountTable";
+import { useUserStore } from "@/stores/useUserStore";
+import { redirect } from "next/navigation";
+import { useEffect } from "react";
 
 const MyPage = () => {
+  const user = useUserStore((state) => state.user);
+
+  useEffect(() => {
+    if (!user || user?.id === '') {
+      redirect("/");
+    }
+  }, [user]);
+  
   return (
     <>
       <div>
