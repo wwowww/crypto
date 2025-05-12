@@ -31,7 +31,7 @@ export const formatMarketCapPrice = (price: number, currency: string) => {
     return `${millionPrice.toFixed(2)}백만`;
   }
 
-  return price.toLocaleString() || 'btc';
+  return typeof price === 'number' ? price.toLocaleString() : '-';
 };
 
 export const formatCurrency = (price: number, currency: string) => {
